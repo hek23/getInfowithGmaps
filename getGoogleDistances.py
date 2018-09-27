@@ -59,11 +59,11 @@ def getDistance(origin, destiny):
       distances.append(leg['distance']['value'])
   return min(distances)
 
-#Funcion que construye la matriz euclidiana en base a una lista de puntos
-def getEuclidian(points):
+#Funcion que construye la matriz de distancias en base a una lista de puntos
+def getMatrix(points):
   global i
   #Se define la matriz en si, pero vacía
-  euclidian = []
+  matrix = []
   #Se recorren los puntos, seleccionando el origen
   for origen in points:
     #Se crea una fila vacía, que contendra la distancia desde este punto al resto
@@ -76,9 +76,9 @@ def getEuclidian(points):
       print(i)
       i = i+1
     #Se añade la fila a la matriz inicial
-    euclidian.append(fila)
+    matrix.append(fila)
   #Se retorna la matriz para su uso
-  return euclidian
+  return matrix
 
 #Funcion que escribe la matriz en un archivo de texto usando formato standard directo
 def escribirMatrizArchivo(matriz):
@@ -101,6 +101,6 @@ def escribirMatrizArchivo(matriz):
 fileName = raw_input("Inserte el nombre del archivo que contiene los puntos: ")
 puntos = abrirArchivo(fileName)
 print("Archivo Cargado")
-matriz = getEuclidian(puntos)
+matriz = getMatrix(puntos)
 print("Matriz lista")
 escribirMatrizArchivo(matriz)
